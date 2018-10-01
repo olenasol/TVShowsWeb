@@ -3,42 +3,21 @@
 <head>
 	<title>TV Shows</title>
 	<meta charset="utf-8">
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		function loadShow(pageNumber){
-			var xhttp = new XMLHttpRequest();
-  			xhttp.onreadystatechange = function() {
-    			if (this.readyState == 4 && this.status == 200) {
-    					onShowsResponse(this.responseText);
-    			}
-  			};
-  			xhttp.open("GET", "http://api.tvmaze.com/shows?page="+pageNumber, true);
-  			xhttp.send();
-		}
-
-		function onShowsResponse(responseText){
-			var shows = JSON.parse(responseText);
-			for (i = 0; i < shows.length; i++) {
-				if(i%3==0){
-					document.getElementById("mainContainer").innerHTML+="<div class=\"row\">"; //beginning of row
-				}
-				document.getElementById("mainContainer").innerHTML+= "<div class=\"col-sm-4\">" +
-				"<img src="+shows[i].image.medium + "  width=\"100\" height=\"175\">"
-				+ "</div>";
-				if(i%3==0){
-					document.getElementById("mainContainer").innerHTML+="</div>"; // end of row
-				}
-			}
-		}
-	</script>
+  	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+  
+  	<script type="text/javascript" src="radialprogress.js"></script>
+	 <script src="main.js"></script> 
 	
+	 <link rel="stylesheet" href="style.css">
 </head>
-<body onload="loadShow(0);">
+<body onload="onBodyLoad();">
 	<div class="container" id="mainContainer">
 		
 	</div>
+	<div id="bar"></div>
+	<button id="loadMoreBtn" onclick="loadShow();">Load more</button>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
