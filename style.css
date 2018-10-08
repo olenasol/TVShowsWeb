@@ -11,3 +11,15 @@ body {
 	margin:0 auto;
     color: white;
 }
+
+#btm_btns {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.btn-primary{
+	background-color: #00b686 !important;
+	border-color: white !important; 
+}

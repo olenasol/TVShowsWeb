@@ -1,23 +1,24 @@
-var numberOfLoadedPages = 0;
-var bar;
 
 function onBodyLoad(){
-	bar=new RadialProgress(document.getElementById("bar"), {indeterminate:true,colorBg:"rgba(0,0,0,0)",colorFg:"#FFFFFF",thick:5} );
-	document.getElementById("loadMoreBtn").style.display = "none";
-	loadShow();
+
+	loadShow(0);
 }
 
-function loadShow(){
-	document.getElementById("loadMoreBtn").style.display = "none";
-	document.getElementById("bar").style.display = "block";
+function loadShow(numberOfPage){
+	
 	var xhttp = new XMLHttpRequest();
+	for(i=0; i<10; i++){
+		var strId = "btn_"+i;
+		document.getElementById(strId).disabled = false;
+	}
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			numberOfLoadedPages++;
+			document.getElementById("btn_"+numberOfPage).disabled = true;
+			document.getElementById("mainContainer").innerHTML = "";
     		onShowsResponse(this.responseText);
     	}
   	};
-  	xhttp.open("GET", "http://api.tvmaze.com/shows?page="+numberOfLoadedPages, true);
+  	xhttp.open("GET", "http://api.tvmaze.com/shows?page="+ numberOfPage, true);
   	xhttp.send();
 }
 
@@ -34,6 +35,4 @@ function onShowsResponse(responseText){
 			document.getElementById("mainContainer").innerHTML+="</div>"; // end of row
 		}
 	}
-	document.getElementById("loadMoreBtn").style.display = "block";
-	document.getElementById("bar").style.display = "none";
 }
