@@ -4,6 +4,38 @@ body {
 #mainContainer {
 	background-color: #00b686;
 }
+
+@media screen and (max-width: 670px) {
+  #mainContainer {
+    width: 100% !important;
+  }
+  .star{
+  	width: 18px !important;
+	height: 15px !important;
+  }
+  .SearchBtn{
+  	width: 20% !important;
+  }
+  #inputSearch{
+  	width: 75% !important;
+  }
+}
+@media screen and (max-width: 460px) {
+  #mainContainer {
+    width: 100% !important;
+  }
+  .star{
+  	width: 12px !important;
+	height: 10px !important;
+  }
+  .btn-primary{
+  	height: 34px;
+  	width:36px;
+  	font-size: 10px !important;
+  }
+  
+  
+}
 #loadMoreBtn{
 	width: 100%;
 	height: 50px;
@@ -12,11 +44,48 @@ body {
     color: white;
 }
 
+.SearchBtn {
+    padding: .5rem;
+    background: #86d1f0;
+    border: none;
+    border-radius: 4px;
+    width: 10%;
+    margin: 4px;
+}
+#inputSearch{
+	width: 50%;
+	padding: .5rem;
+	border: 1px solid #00b686;
+	border-radius: 4px;
+    margin: 4px;
+}
+
+#searchDiv{
+	margin:0 auto;
+	width: 100%;
+}
+
 #btm_btns {
   margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  visibility: hidden;
+}
+
+.star{
+	width:25px;
+	height: 20px;
+}
+.columnDiv{
+	margin-top: 20px;
+	height: 295px;
+}
+
+p {
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
 }
 
 .btn-primary{
